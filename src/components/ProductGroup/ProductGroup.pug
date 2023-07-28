@@ -1,0 +1,12 @@
+include ProductGroupTable
+
+// -
+    param {
+        type ['filter'*, 'tabs']
+    }
+
+mixin ProductGroup(param = {})
+    .product-group
+        .product-group__filter
+            +Filters()
+        +ProductGroupTable()

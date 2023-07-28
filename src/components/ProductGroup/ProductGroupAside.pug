@@ -1,0 +1,52 @@
+// -
+    params {
+        hideAction
+        hideProps
+        hidePrice
+        hideForm
+        slider: '', 'mini'
+    }
+
+mixin ProductGroupAside(params = {})
+    .pg-aside
+        .pg-aside__img
+            - if (!params.slider)
+                +SliderProduct()
+            - else if (params.slider === 'mini')
+                +SliderMini()
+        .pg-aside__content
+
+            - if (!params.hideAction)
+                .pg-aside__item.pg-aside__item_action
+                    .pg-aside__action
+                        button.btn.btn_secondary-dark.btn_100(data-my-modal="#fast-order") Быстрый заказ
+
+            - if (!params.hideProps)
+                .pg-aside__item
+                    +PropList({ showTitle: true })
+
+            - if (!params.hidePrice)
+                .pg-aside__item
+                    .pg-aside__price
+                        .pg-aside__price-title Цена
+                        .pg-aside__price-value 1 398 ₽
+                        .pg-aside__price-value.pg-aside__price-value_text Договорная
+                        .pg-aside__price-action
+                            button.btn.btn_secondary-dark.btn_100
+                                |Купить
+                                +icon('cart-line')
+                            button.btn.btn_outline.btn_100
+                                |Подробнее
+                                +icon('arrow-right')
+
+            - if (!params.hideForm)
+                .pg-aside__item
+                    .pg-aside__form
+                        .pg-aside__form-title Купить в 1 клик
+                        .pg-aside__form-text Наш менеджер свяжется с вами и рассчитает стоимость заказа
+                        .pg-aside__form-form
+                            form(data-loader-container=".pg-aside__form").form
+                                .form__row.form__row_mobile
+                                    +Input({ name: 'phone', mask: 'phone', placeholder: 'Телефон' })
+                                    button(type="submit").btn.btn_square.btn_primary
+                                        +icon('arrow-right')

@@ -1,0 +1,44 @@
+mixin Breadcrumbs()
+    ul.breadcrumbs
+
+        li.breadcrumbs__item
+            a(href='./').breadcrumbs__link Главная
+
+        li.breadcrumbs__item
+            a(href='./').breadcrumbs__link В категории
+
+        - for (let i = 0; i < 3; i++)
+            li.breadcrumbs__item
+                a(href='./').breadcrumbs__link Категория #{i+1}
+
+        li.breadcrumbs__item.breadcrumbs__item_btn
+            a(href='./').breadcrumbs__link С вложенностью
+
+            .breadcrumbs__menu
+                button(data-my-modal="#breadcrumb-1")
+                    +icon('arrow-down')
+                +MyModal({id: 'breadcrumb-1', mode: 'menu', position: 'left', size: 'xl'})
+                    +slot('body')
+                        ul.breadcrumbs__menu-content
+                            li.breadcrumbs__item
+                                a(href='./').breadcrumbs__link Внутри 1
+                            li.breadcrumbs__item
+                                a(href='./').breadcrumbs__link Внутри 2
+                            li.breadcrumbs__item
+                                a(href='./').breadcrumbs__link Внутри 3
+
+        // -li.breadcrumbs__item.breadcrumbs__item_dots
+            .breadcrumbs__menu
+                button(data-my-modal="#breadcrumb-more") ...
+                +MyModal({id: 'breadcrumb-more', mode: 'menu', position: 'left', size: 'xl'})
+                    +slot('body')
+                        ul.breadcrumbs__menu-content
+                            li.breadcrumbs__item
+                                a(href='./').breadcrumbs__link Не влезла 1
+                            li.breadcrumbs__item
+                                a(href='./').breadcrumbs__link Не влезла 2
+                            li.breadcrumbs__item
+                                a(href='./').breadcrumbs__link Не влезла 3
+
+        li.breadcrumbs__item
+            .breadcrumbs__link Конец

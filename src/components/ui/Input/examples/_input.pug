@@ -1,0 +1,34 @@
+div(style="max-width: 310px; padding: 10px;")
+    +Input({type: 'unit', unit: 'от', placeholder: 'мм', value: 666})
+
+div(style="max-width: 310px; padding: 10px;")
+    +Input({type: 'count', placeholder: 'кг'})
+
+div(style="max-width: 310px; padding: 10px;") lg (default)
+div(style="max-width: 310px; padding: 10px;")
+    +Input({placeholder: 'Placeholder'})
+div(style="max-width: 310px; padding: 10px;")
+    +Input({placeholder: 'Placeholder', status: 'success'})
+div(style="max-width: 310px; padding: 10px;")
+    +Input({placeholder: 'Placeholder', status: 'error'})
+
+div(style="max-width: 310px; padding: 10px;") md & required
+div(style="max-width: 310px; padding: 10px;")
+    +Input({placeholder: 'Placeholder', size: 'md', required: true})
+div(style="max-width: 310px; padding: 10px;")
+    +Input({placeholder: 'Placeholder', status: 'success', size: 'md', required: true})
+div(style="max-width: 310px; padding: 10px;")
+    +Input({placeholder: 'Placeholder', status: 'error', size: 'md', required: true})
+
+div(style="max-width: 310px; padding: 10px;") placeholder shown
+div(style="max-width: 310px; padding: 10px;")
+    +Input({placeholder: 'Placeholder', mode: 'placeholder'})
+div(style="max-width: 310px; padding: 10px;")
+    +Input({placeholder: 'Placeholder', mode: 'placeholder', status: 'success'})
+div(style="max-width: 310px; padding: 10px;")
+    +Input({placeholder: 'Placeholder', mode: 'placeholder', status: 'error', required: true})
+
+div(style="max-width: 310px; padding: 10px;") search two icon
+div(style="max-width: 310px; padding: 10px;")
+    +Input({placeholder: 'Placeholder', type: 'search'})
+

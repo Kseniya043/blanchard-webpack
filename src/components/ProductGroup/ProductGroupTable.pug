@@ -1,0 +1,110 @@
+// -
+    param {
+        id
+        style
+        pagination: '', 'show-more'
+        noDataModal
+    }
+
+mixin ProductGroupTable(param = {})
+
+    - if (!param.type || param.type === 'table')
+        .product-group__table(
+                id=param.id
+                style=param.style
+            )
+
+            table.table.pg-table
+                thead
+                    tr
+                        th Марка
+                        th
+                            | L
+                            +icon('question', null, 'tippy text', null, 'tippy text')
+                        th
+                            | l
+                            +icon('question', null, 'tippy text')
+                        th
+                            | l1
+                            +icon('question', null, 'tippy text')
+                        th
+                            | Цена, ₽
+                            +icon('question', null, 'tippy text')
+                        th
+                - for (let i = 0; i < 6; i++)
+                    tr(data-my-modal=param.noDataModal ? false : "#modal-preview")
+                        td.pg-table__name
+                            span Опоры подвижные трехрядные А14Б 65x78x23 мм &#32;
+                            span А69Б 563.000-02
+                            - if (i == 2)
+                                +icon('fire')
+
+                        td.pg-table__option 160
+                        td.pg-table__option 270
+                        td.pg-table__option 260
+
+                        - if (i < 3)
+                            td.pg-table__price 561 696 ₽
+                        - else
+                            td.pg-table__price
+                                span Договорная
+                                span
+                                    | &#32;цена
+                                    +icon('question', null, 'tippy text')
+
+                        td
+                            .pg-table__actions
+                                button.btn.btn_secondary-dark.btn_md.pg-table__btn-cart
+                                    span Купить
+                                    +icon('cart-line')
+                                button.btn.btn_md.btn_primary-dark.btn_square.pg-table__btn-more
+                                    +icon('more-line')
+
+            - if (param.pagination === 'show-more')
+                .product-group__pagination
+                    +Pagination({hideInfo: true, hideCount: true, hidePages: true, showMoreLink: true})
+            - else
+                .product-group__pagination
+                    +Pagination({hideInfo: true, hideShowMore: true})
+
+    - if (param.type === 'search')
+
+        .product-group__table.product-group__table_search(
+            id=param.id
+            style=param.style
+        )
+
+            table.table.pg-table
+                thead
+                    tr
+                        th Название
+                        th
+                            | Цена, ₽
+                            +icon('question', null, 'tippy text')
+                        th
+                - for (let i = 0; i < 20; i++)
+                    tr
+                        td.pg-table__name
+                            | Опоры подвижные трехрядные А14Б 65x78x23 мм А69Б 563.000-02
+                            - if (i == 2)
+                                +icon('fire')
+
+                        - if (i < 3)
+                            td.pg-table__price 561 696 ₽
+                        - else
+                            td.pg-table__price
+                                span Договорная
+                                span
+                                    | &#32;цена
+                                    +icon('question', null, 'tippy text')
+
+                        td
+                            .pg-table__actions
+                                button.btn.btn_secondary-dark.btn_md.pg-table__btn-cart
+                                    span Купить
+                                    +icon('cart-line')
+                                button.btn.btn_md.btn_primary-dark.btn_square.pg-table__btn-more
+                                    +icon('more')
+
+            .product-group__pagination
+                +Pagination()

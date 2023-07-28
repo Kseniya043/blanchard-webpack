@@ -1,0 +1,278 @@
+@import "InputRange/InputRange";
+@import "CheckList/CheckList";
+
+.filters {
+  display: flex;
+  gap: 10px;
+
+  @include md {
+    overflow: auto;
+    @include hideScroll();
+  }
+}
+
+.filter {
+  // Elements
+  &__btn {
+    cursor: pointer;
+    background-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    color: $text-1;
+    padding: 8px 26px 8px 12px;
+    position: relative;
+    border-radius: $border-radius;
+    white-space: nowrap;
+    animation: fade-in $transition;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0px;
+      border: 1px solid $ui-gray-1;
+      border-radius: $border-radius;
+      user-select: none;
+    }
+
+    &-toggle,
+    &-clear {
+      svg {
+        fill: $ui-gray-2;
+        transition: fill $transition,
+        transform $transition;
+      }
+    }
+
+    &-toggle {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      transition: transform $transition;
+    }
+
+    &-clear {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 0px;
+      top: 0;
+      bottom: 0;
+      width: 36px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 20px;
+        background: $ui-gray-1;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    &:hover {
+      &::after { border-color: $ui-gray-2; }
+      .filter__btn-toggle {
+        svg {
+          fill: $ui-dark-2;
+        }
+      }
+    }
+
+    &.active {
+      .filter__btn-toggle {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &_checked {
+      background: $ui-secondary;
+      padding: 8px 49px 8px 12px;
+
+      &:after {
+        content: none;
+      }
+      .filter__btn-toggle {
+        display: none;
+      }
+      .filter__btn-clear {
+        display: flex;
+      }
+      .filter__btn-toggle,
+      .filter__btn-clear {
+        svg {
+          fill: $ui-dark-2;
+        }
+      }
+    }
+  }
+
+  &__dropdawn {
+    position: relative;
+  }
+}
+
+.filter_all {
+  .filter__btn {
+    background-color: $ui-secondary;
+    padding: 8px 42px 8px 16px;
+
+    svg {
+      fill: $ui-dark-2;
+    }
+
+    &::after {
+      content: none;
+    }
+  }
+
+  .accordion__head-content,
+  .accordion__body-content {
+    padding-inline: 0;
+  }
+
+  .select {
+    .input {
+      //&::after { content: none; }
+    }
+    input {
+      padding: 8px 10px;
+    }
+  }
+
+  @include md {
+    .my-modal__body {
+      padding: 16px;
+      background-color: $ui-secondary;
+    }
+    .select {
+      margin-bottom: 16px;
+      @include card();
+      box-shadow: none;
+    }
+    .btn-drawers {
+      background: white;
+      padding: 0 16px;
+      @include card();
+      border-radius: $border-radius;
+    }
+    .my-modal__head,
+    .my-modal__footer {
+      box-shadow: $box-shadow-2;
+    }
+  }
+}
+
+.filter_clear {
+  .filter__btn {
+    padding: 8px 16px;
+    &::after {
+      content: none;
+    }
+  }
+}
+
+.btn-drawers {
+  display: flex;
+  flex-direction: column;
+}
+.btn-drawer {
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 24px 8px 0;
+  min-height: 53px;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+
+  &:not(:last-child) {
+    border-bottom: solid 1px $ui-gray-1;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background: url('@/assets/img/svg/select-toggle.svg') center center no-repeat;
+    transform: rotate(-90deg) translateX(50%);
+  }
+
+  &__count {
+    font-size: 11px;
+    line-height: 12px;
+    color: $text-5;
+    margin-top: 2px;
+  }
+}
+
+#filterAll {
+  .my-modal__body {
+    .accordion {
+      border: none;
+      @include sm { display: none; }
+    }
+    .btn-drawers {
+      @include afterSm { display: none; }
+    }
+  }
+}
+
+.filter-accordion {
+  position: relative;
+
+  &__submit {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    padding: 12px 20px;
+    border-radius: $border-radius;
+    background: $ui-primary;
+    color: $text-4;
+    transform: translate(calc(-100% - 16px), -20%);
+    transition: $transition top,
+                $transition visibility;
+    filter: $filter-shadow;
+    animation: fade-in $transition;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: -13px;
+      border-radius: 3px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      width: 20px;
+      height: 8px;
+      background-color: $ui-primary;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+  }
+
+  .filter-accordion__all {
+    @include afterSm {
+      display: none;
+    }
+  }
+  .filter-accordion__items {
+    @include md {
+      display: none;
+    }
+  }
+}

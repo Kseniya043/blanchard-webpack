@@ -1,0 +1,19 @@
+include ../Checkbox
+.t-section
+	h3.t-title Чекбоксы
+	.t-block
+
+		+Checkbox()
+		+Checkbox({checked: true})
+		+Checkbox({checked: true, disabled: true})
+		+Checkbox({text: 'Checkbox right'})
+		+Checkbox({text: 'Checkbox reverse', reverse: true})
+		+Checkbox({text: 'Checkbox Indeterminate'})
+		+CheckboxBtn({text: 'Checkbox Btn', checked: true})
+		+CheckboxBtn({text: 'Checkbox Btn'})
+
+
+script.
+	const checkboxAll = [...document.querySelectorAll('.checkbox__input')];
+	const checkbox = checkboxAll[checkboxAll.length - 1];
+	checkbox.indeterminate = true;

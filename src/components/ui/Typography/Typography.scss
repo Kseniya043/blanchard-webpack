@@ -1,0 +1,138 @@
+@font-face {
+  font-family: 'Ubuntu';
+  src: url("~@/assets/fonts/ubuntu/Ubuntu-Light.ttf") format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  src: url("~@/assets/fonts/ubuntu/Ubuntu-Regular.ttf") format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  src: url("~@/assets/fonts/ubuntu/Ubuntu-Medium.ttf") format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  src: url("~@/assets/fonts/ubuntu/Ubuntu-Bold.ttf") format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+
+.h1, .h2, .h3, .h4, .h5 {
+  font-weight: 500;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.h1 {
+  font-size: 56px;
+  line-height: 64px;
+}
+.h2 {
+  font-size: 40px;
+  line-height: 48px;
+}
+.h3 {
+  font-size: 28px;
+  line-height: 36px;
+}
+.h4 {
+  font-size: 24px;
+  line-height: 28px;
+}
+.h5 {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: $text-5;
+  text-decoration: none;
+  position: relative;
+  transition: color $transition;
+
+  > * {
+    cursor: pointer;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.link {
+    // Colors
+    &_dark {
+      color: $text-2;
+    }
+    &_light {
+      color: $text-4;
+    }
+
+    // Modifications
+    &_icon {
+      &-after,
+      &-before,
+      &-around {
+        svg.svg-icon {
+          fill: $ui-gray-2;
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+
+      &-after {
+        padding-right: 16px;
+        svg { right: 0px; }
+      }
+      &-before {
+        padding-left: 20px;
+        svg { left: 0px; }
+      }
+      &-around {
+        padding-right: 16px;
+        padding-left: 20px;
+        svg {
+          &:first-child { left: 0px; }
+          &:last-child { right: 0px; }
+        }
+      }
+    }
+
+    &-adaptive {
+      @include sm {
+        width: 100%;
+        display: inline-block;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 0px;
+          transform: translateY(-50%) rotate(-90deg);
+          width: 20px;
+          height: 20px;
+          background: url("~@/assets/img/svg/select-toggle.svg") center center no-repeat;
+        }
+      }
+    }
+  }
+}

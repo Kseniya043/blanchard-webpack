@@ -1,0 +1,67 @@
+// Библиотеки (опционально)
+@import "~normalize.css";
+@import "~nouislider";
+@import "~tippy.js/dist/tippy.css";
+@import "~hystmodal/dist/hystmodal.min.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+// Утилиты
+@import "variables.scss";
+@import "breakpoints.scss";
+@import "keyframes.scss";
+
+// Основные стили
+@import "~@/components/components";
+@import "~@/mixins/mixins";
+@import "temp"; // < ВРЕМЕННЫЕ СТИЛИ
+
+html {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px;
+  line-height: 26px;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+body {
+  font-size: 1rem;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+
+// скролл
+*:not(body) {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border: solid 3px transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 2px 2px rgba(0, 0, 0, 0.72);
+    border: solid 3px transparent;
+    border-radius: 8px;
+  }
+}
+
+.svg-icon {
+  width: 24px;
+  height: 24px;
+}
+

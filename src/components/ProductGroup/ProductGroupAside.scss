@@ -1,0 +1,70 @@
+.pg-aside {
+  @include card();
+  overflow: hidden;
+
+  &__content {
+    gap: 16px;
+  }
+
+  &__item {
+    padding: 16px;
+
+    &:not(:last-child):not(.pg-aside__item_action) {
+      position: relative;
+      margin-bottom: 16px;
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        right: 0;
+        height: 1px;
+        background-color: $ui-gray-1;
+      }
+    }
+
+    &_action {
+      padding-bottom: 8px;
+    }
+  }
+
+  &__price {
+    &-title {
+      font-weight: 500;
+      font-size: 11px;
+      color: $text-3;
+      line-height: 16px;
+      margin-bottom: 4px;
+    }
+    &-value {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+      margin-bottom: 16px;
+      &_text {
+        font-size: 17px;
+        line-height: 24px;
+      }
+    }
+    &-action {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__form {
+    &-title {
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 24px;
+      margin-bottom: 8px;
+    }
+    &-text {
+      font-size: 13px;
+      color: $text-2;
+      margin-bottom: 16px;
+    }
+  }
+}

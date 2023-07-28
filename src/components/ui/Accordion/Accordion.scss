@@ -1,0 +1,117 @@
+.accordion {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-width: 480px;
+  width: 100%;
+
+  &__item {
+    padding: 8px 0;
+    overflow: hidden;
+    width: 100%;
+    background-color: $ui-white;
+    border-bottom: 1px solid $ui-gray-1;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &.active {
+      .accordion__body {
+        opacity: 1;
+      }
+
+      .accordion__icon {
+        svg {
+          transform: rotate(45deg);
+        }
+      }
+
+      .accordion__head-label {
+        display: none;
+      }
+    }
+  }
+
+  &__head {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    user-select: none;
+
+    &-content {
+      padding: 8px 16px;
+      min-height: 36px;
+    }
+
+    &-text {
+      color: $text-1;
+      font-size: 15px;
+      line-height: 1.47;
+      transition: color $transition;
+    }
+
+    &-label {
+      margin-top: 2px;
+      font-size: 11px;
+      line-height: 12px;
+      color: $text-5;
+      display: block;
+      animation: fade-in $transition;
+    }
+
+    &:hover {
+      .accordion__head-text {
+        color: $text-5;
+      }
+
+      svg {
+        fill: $ui-gray-2;
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 16px;
+    width: 20px;
+    height: 20px;
+
+    svg {
+      fill: $ui-gray-1;
+      transition: transform $transition;
+    }
+  }
+
+  &__body {
+    max-height: 0;
+    overflow: hidden;
+    will-change: max-height;
+    transition: all 0.25s ease-out;
+    opacity: 0;
+    box-sizing: content-box;
+
+
+    &-content {
+      font-size: 13px;
+      color: $text-2;
+      line-height: 1.54;
+      padding: 8px 16px;
+    }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+

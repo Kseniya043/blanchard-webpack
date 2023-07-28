@@ -1,0 +1,60 @@
+.input-range {
+  &__units {
+    margin-bottom: 16px;
+  }
+  &__inputs {
+    display: flex;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: calc(50% - 4px);
+      width: 8px;
+      height: 1px;
+      background: $ui-gray-2;
+    }
+
+    .input {
+      flex: 1;
+
+      &:not(:last-child) {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  // noUIslider
+  &__slider {
+    height: 2px;
+    margin: 20px 9px;
+    background: $ui-gray-1;
+    border: none;
+  }
+
+  .noUi-connect {
+    background: $ui-primary;
+    border: none;
+    height: 2px;
+  }
+  .noUi-connects {
+    padding: 5px;
+  }
+
+  .noUi-handle {
+    height: 16px;
+    width: 16px;
+    top: -7px;
+    right: -7px;
+    border-radius: 8px;
+    background: $ui-white;
+    border: 2px solid $ui-primary;
+
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+
+}

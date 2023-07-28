@@ -1,0 +1,39 @@
+div(style="max-width: 310px; padding: 10px;")
+    +InputFile()
+    br
+
+div(style="max-width: 310px; padding: 10px;")
+    +Input({ type: 'textarea', placeholder: 'textarea' })
+    br
+    br
+    +Toggle({ label: 'toggle' })
+    br
+    br
+    +Toggle({ label: 'toggle', disabled: true })
+    br
+    br
+    +Toggle({ label: 'toggle', disabled: true, checked: true })
+    br
+    br
+    +Toggle({ label: 'toggle', reverse: true })
+    br
+    br
+    +Toggle({ label: 'toggle', labelTwo: 'elggot' })
+    br
+    br
+    +RadioBtn({ text: 'за м²', name: 'test', value: '0', checked: true })
+    +RadioBtn({ text: 'За тонну', name: 'test', value: '1' })
+
+
+div(style="max-width: 310px; padding: 10px;") Select radio search
+div(style="max-width: 310px; padding: 10px;")
+    +SelectSearch()
+
+div(style="max-width: 310px; padding: 10px;") Select radio search async
+div(style="max-width: 310px; padding: 10px;")
+    +SelectSearch({ action: './assets/json/selectSearchTest.json' })
+
+include _input
+include _select
+include _checkbox
+include _radio

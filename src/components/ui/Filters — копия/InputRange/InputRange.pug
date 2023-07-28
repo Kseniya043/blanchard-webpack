@@ -1,0 +1,20 @@
+// -
+    param.min
+    param.max
+
+mixin InputRange(param = {})
+
+    - param.min = param.min || 0;
+    - param.max = param.max || 6666666;
+
+    .input-range
+        .input-range__units
+            //+RadioBtn({ text: 'за м²', name: 'priceType', value: '0', checked: true })
+            //+RadioBtn({ text: 'За тонну', name: 'priceType', value: '1' })
+            +CheckboxBtn({text: 'за м²', name: 'priceType', value: '0', checked: true })
+            +CheckboxBtn({text: 'За тонну', name: 'priceType', value: '1' })
+        .input-range__inputs
+            +Input({ placeholder: 'От', class: 'input-min', name: 'priceMin' })
+            +Input({ placeholder: 'До', class: 'input-max', name: 'priceMax' })
+        .input-range__slider(data-min=param.min data-max=param.max)
+

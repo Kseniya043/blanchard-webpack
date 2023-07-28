@@ -1,0 +1,66 @@
+include InputRange/InputRange
+include CheckList/CheckList
+
+mixin Filters()
+    .filters
+        .filter.filter_all(data-filter-type="all" data-filter-name="all")
+            .filter__btn(data-my-modal="#filterAll")
+                .filter__btn-text
+                    span.filter__btn-name Все фильтры
+                    span.filter__btn-count
+                .filter__btn-toggle
+                    +icon('arrow-down')
+                .filter__btn-clear
+                    +icon('close')
+            .filter__dropdawn
+                +MyModal({id: 'filterAll', mode: 'drawer', class: 'filter__modal'})
+                    +slot('head') Фильтры
+                    +slot('body')
+                    +slot('footer')
+                        button(type="reset" data-my-modal-reset).btn.btn_secondary reset
+                        button(type="submit" data-my-modal-submit).btn.btn_primary submit
+
+        .filter.filter_price(data-filter-type="range" data-filter-name="price")
+            .filter__btn(data-my-modal="#price")
+                .filter__btn-text
+                    span.filter__btn-name Цена
+                    span.filter__btn-count
+                .filter__btn-toggle
+                    +icon('arrow-down')
+                .filter__btn-clear
+                    +icon('close')
+            .filter__dropdawn
+                +MyModal({id: 'price', mode: 'menu', class: 'filter__modal', backId: 'filterAll'})
+                    +slot('head') Цена
+                    +slot('body')
+                        +InputRange()
+
+        .filter.filter_check-list(data-filter-type="check-list" data-filter-name="height")
+            .filter__btn(data-my-modal="#check1")
+                .filter__btn-text
+                    span.filter__btn-name Высота
+                    span.filter__btn-count
+                .filter__btn-toggle
+                    +icon('arrow-down')
+                .filter__btn-clear
+                    +icon('close')
+            .filter__dropdawn
+                +MyModal({id: 'check1', mode: 'menu', class: 'filter__modal', backId: 'filterAll'})
+                    +slot('head') Фильтр тест 1
+                    +slot('body')
+                        +CheckList({ checked: [2, 6], name: 'width' })
+
+        .filter.filter_check-list(data-filter-type="check-list" data-filter-name="width")
+            .filter__btn(data-my-modal="#check2")
+                .filter__btn-text
+                    span.filter__btn-name Ширина
+                    span.filter__btn-count
+                .filter__btn-toggle
+                    +icon('arrow-down')
+                .filter__btn-clear
+                    +icon('close')
+            .filter__dropdawn
+                +MyModal({id: 'check2', mode: 'menu', class: 'filter__modal', backId: 'filterAll'})
+                    +slot('head') Фильтр тест 2
+                    +slot('body')
+                        +CheckList({ checked: [1, 2, 3], name: 'height' })

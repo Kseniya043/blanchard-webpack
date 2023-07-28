@@ -1,0 +1,87 @@
+// t - временные стили
+
+.t-body {
+  background-color: none;
+}
+
+.t-section {
+  margin: 3rem 0;
+}
+
+.t-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 1.1rem;
+}
+
+.t-tooltip {
+  div {
+    height: 40px;
+    padding: 0 40px;
+    background-color: $ui-secondary;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.t-main-left-list {
+  position: sticky;
+  top: 18px;
+  padding-left: 10px;
+
+  li {
+    margin-bottom: 10px;
+    list-style: none;
+
+    button {
+      font-size: 20px;
+      padding: 5px 8px;
+      cursor: pointer;
+    }
+  }
+}
+
+.t-main-left {
+  @include sm {
+    display: none;
+  }
+}
+
+.t-tabs {
+  box-shadow: -10px 0 10px -10px #BABABA; width: 100%; min-height: 100vh;
+
+  .tab {
+    display: none;
+    height: 100%;
+    padding: 15px;
+    overflow: hidden;
+  }
+
+  .accordion-tab {
+    background-color: darkgray;
+      h2 {
+        text-align: center;
+      }
+
+      .t-block {
+        align-items: center;
+      }
+  }
+
+}
+
+.t-filter-tab {
+  padding: 0;
+}
+
+
+.t-city {
+  display: inline-block;
+  padding: 10px;
+  background-color: $ui-gray-2;
+  border-radius: $border-radius;
+  position: relative;
+}

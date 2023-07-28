@@ -1,0 +1,37 @@
+// -
+    param.name - name // Если оставить пустым, будет сгенерирован Math.floor(Math.random() * 666)
+    param.id - id // Если оставить пустым, будет сгенерирован Math.floor(Math.random() * 666)
+
+mixin Select(param = {})
+
+    - param.name = param.name ? param.name : 'name-' + Math.floor(Math.random() * 666);
+    - param.id = Math.floor(Math.random() * 666);
+
+    .select
+        +Input({placeholder: 'Placeholder', disabled: true})
+        .select__dropdown
+            - for (let i=1; i<=10; i++)
+                .select__item
+                    input(type="radio" name=param.name+'[]' id=param.id+i)
+                    label(for=param.id+i) Вариант - #{i}
+
+// -
+    param.name - name // Если оставить пустым, будет сгенерирован Math.floor(Math.random() * 666)
+    param.id - id // Если оставить пустым, будет сгенерирован Math.floor(Math.random() * 666)
+    param.action // TODO param.action
+    param.placeholder
+
+mixin SelectSearch(param = {})
+
+    - param.name = param.name ? param.name : 'name-' + Math.floor(Math.random() * 666);
+    - param.id = Math.floor(Math.random() * 666);
+
+    .select.select_search
+        form(action=param.action || '#')
+            +Input({type: 'search', placeholder: param.placeholder})
+        .select__dropdown
+            if (!param.action)
+                - for (let x=1; x<=10; x++)
+                    .select__item
+                        input(type="radio" name=param.name+'[]' id=param.id+x)
+                        label(for=param.id+x) #{x} - Вариант

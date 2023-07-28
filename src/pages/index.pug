@@ -1,0 +1,18 @@
+extends ../templates/main
+
+block variables
+    - const title = 'Главная'
+    - const description = 'Описание главной страницы'
+
+block content
+
+    ul
+        li
+            a(href="main.html") main
+        li
+            a(href="catalog.html") catalog
+
+    ul
+        li
+            a(href="ui.html") UI Examples
+            //

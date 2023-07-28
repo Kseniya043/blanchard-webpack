@@ -1,0 +1,17 @@
+.check-list {
+  &__search {
+    padding-bottom: 8px;
+  }
+
+  &__items {
+    padding: 0 8px 0 12px;
+    max-height: 180px;
+    overflow: auto;
+
+    .checkbox {
+      &:not(:last-child) {
+        margin-bottom: 14px;
+      }
+    }
+  }
+}

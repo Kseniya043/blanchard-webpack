@@ -1,0 +1,82 @@
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $text-2;
+    gap: 8px;
+  }
+
+  &__count {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__info,
+  &__count {
+    //width: 25%;
+    flex: 1;
+    @include sm {
+      display: none;
+    }
+  }
+
+  &__count {
+    text-align: right;
+  }
+
+  &__pages {
+    width: max-content;
+    display: flex;
+    justify-content: center;
+
+    @include sm {
+      width: 100%;
+    }
+  }
+}
+
+.pages {
+  display: flex;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: $border-radius;
+    transition: background-color $transition;
+    color: $text-1;
+
+    &:hover {
+      text-decoration: none;
+
+      &:not(.active) {
+        background-color: $ui-secondary;
+      }
+    }
+
+    &.active {
+      background-color: $ui-primary;
+      color: $text-4;
+    }
+
+    &_prev,
+    &_next {
+      svg { fill: $ui-dark-2 }
+    }
+
+    &_prev {
+      svg { transform: rotate(90deg) }
+    }
+    &_next {
+      svg { transform: rotate(-90deg) }
+    }
+  }
+}

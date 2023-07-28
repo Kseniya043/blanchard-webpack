@@ -1,0 +1,163 @@
+@import "InputRange/InputRange";
+@import "CheckList/CheckList";
+
+.filters {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.filter {
+  // Elements
+  &__btn {
+    cursor: pointer;
+    background-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    color: $text-1;
+    padding: 12px 34px 12px 16px;
+    position: relative;
+    border-radius: $border-radius;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0px;
+      border: 1px solid $ui-gray-1;
+      border-radius: $border-radius;
+      user-select: none;
+    }
+
+    &-toggle,
+    &-clear {
+      svg {
+        fill: $ui-gray-2;
+        transition: fill $transition,
+        transform $transition;
+      }
+    }
+
+    &-toggle {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      transition: transform $transition;
+    }
+
+    &-clear {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 0px;
+      top: 0;
+      bottom: 0;
+      width: 36px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 20px;
+        background: $ui-gray-1;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    &:hover {
+      &::after { border-color: $ui-gray-2; }
+      .filter__btn-toggle {
+        svg {
+          fill: $ui-dark-2;
+        }
+      }
+    }
+
+    &.active {
+      .filter__btn-toggle {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &_checked {
+      background: $ui-secondary;
+      padding: 12px 49px 12px 16px;
+
+      &:after {
+        content: none;
+      }
+      .filter__btn-toggle {
+        display: none;
+      }
+      .filter__btn-clear {
+        display: flex;
+      }
+      .filter__btn-toggle,
+      .filter__btn-clear {
+        svg {
+          fill: $ui-dark-2;
+        }
+      }
+    }
+  }
+
+  &__dropdawn {
+    position: relative;
+  }
+}
+
+.btn-drawers {
+  display: flex;
+  flex-direction: column;
+}
+.btn-drawer {
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 24px 8px 0;
+  min-height: 53px;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+
+  &:not(:last-child) {
+    border-bottom: solid 1px $ui-gray-1;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background: url('@/assets/img/svg/select-toggle.svg') center center no-repeat;
+    transform: rotate(-90deg) translateX(50%);
+  }
+
+  &__count {
+    font-size: 11px;
+    line-height: 12px;
+    color: $text-5;
+    margin-top: 2px;
+  }
+}
+
+#filterAll {
+  .my-modal__body {
+    .accordion {
+      @include sm { display: none; }
+    }
+    .btn-drawers {
+      @include afterSm { display: none; }
+    }
+  }
+}

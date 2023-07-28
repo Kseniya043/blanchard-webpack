@@ -1,0 +1,19 @@
+// -
+    param {
+        checked: [num, num...]
+        name: input:checkbox name
+    }
+
+mixin CheckList(param = {})
+
+    - param.checked = param.checked || [];
+
+    .check-list
+        .check-list__search
+            +Input({placeholder: 'Placeholder', type: 'search', inputClass: 'filter__input-skip'})
+        .check-list__items
+            - for (let i = 0; i < 10; i++)
+            - if (param.checked.includes(i))
+                +Checkbox({name: param.name + `[${i}]` || false, value: i, text: `${i} qwer`, reverse: true, checked: true})
+            - else
+                +Checkbox({name: param.name + `[${i}]` || false, value: i, text: `${i} qwer`, reverse: true})

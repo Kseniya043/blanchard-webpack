@@ -1,0 +1,207 @@
+button {
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.btn {
+  position: relative;
+  background: transparent;
+  font-size: 1rem;
+  line-height: 20px;
+  padding: 12px 20px;
+  outline: none;
+  border: none;
+  color: $text-1;
+  text-decoration: none;
+  font-weight: 400;
+  border-radius: $border-radius;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border $transition,
+              color $transition,
+              background-color $transition,
+              background $transition;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    margin-right: -8px;
+    fill: $ui-gray-2;
+    transition: fill $transition;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:hover:not([disabled]) {
+    color: $text-5;
+    svg { fill: $text-5 }
+  }
+  &[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  // COLORS
+  // primary
+  &_primary {
+    background: $ui-primary;
+    color: $text-4;
+
+    &:hover:not([disabled]) {
+      background-color: mix(black, $ui-primary, 12);
+      color: $text-4;
+      svg { fill: $ui-white; }
+    }
+
+    svg { fill: $ui-white; }
+  }
+
+  // secondary
+  &_secondary {
+    background: $ui-secondary;
+    color: $text-1;
+
+    &:hover:not([disabled]) {
+      background-color: mix(black, $ui-secondary, 8);
+      color: $text-1;
+
+      svg { fill: $ui-dark-2 }
+    }
+
+    svg { fill: $ui-dark-2 }
+  }
+
+  // outline
+  &_outline {
+    color: $text-1;
+
+    &::after { // border
+      content: '';
+      position: absolute;
+      inset: 0px;
+      border: 1px solid $ui-gray-1;
+      border-radius: $border-radius;
+      user-select: none;
+      transition: border $transition;
+    }
+
+    &:hover:not([disabled]) {
+      color: $text-1;
+
+      &::after {
+        border-color: $ui-gray-2;
+      }
+
+      svg { fill: $ui-dark-2 }
+    }
+
+    svg { fill: $ui-gray-2 }
+  }
+
+  &_dark {
+    color: $text-4;
+
+    &:hover:not([disabled]) {
+      color: $text-5;
+    }
+  }
+
+  &_primary-dark {
+    background: $ui-white;
+    color: $text-1;
+
+    &:hover:not([disabled]) {
+      background-color: mix(black, $ui-white, 12);
+      color: $text-1;
+      svg { fill: $ui-dark-2; }
+    }
+
+    svg { fill: $ui-dark-2; }
+  }
+
+  &_secondary-dark {
+    background: $ui-dark-2;
+    color: $text-4;
+
+    &:hover:not([disabled]) {
+      background-color: mix(white, $ui-dark-2, 8);
+      color: $text-4;
+
+      svg { fill: $ui-white }
+    }
+
+    svg { fill: $ui-white }
+  }
+
+  &_outline-dark {
+    color: $text-4;
+
+    &::after { // border
+      content: '';
+      position: absolute;
+      inset: 0px;
+      border: 1px solid $ui-white;
+      border-radius: $border-radius;
+      user-select: none;
+      transition: border $transition;
+    }
+
+    &:hover:not([disabled]) {
+      color: $text-5;
+
+      &::after {
+        border-color: $ui-primary;
+      }
+
+      svg { fill: $ui-primary }
+    }
+
+    svg { fill: $ui-white }
+  }
+
+  // SIZES
+  // medium size
+  &_md {
+    padding: 8px 16px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      margin-left: 16px;
+      margin-right: -6px;
+    }
+  }
+  &_100 {
+    width: 100%;
+
+    svg {
+      margin-left: auto;
+    }
+  }
+
+  // TYPE
+  // square
+  &_square {
+    padding: 10px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      margin: 0;
+    }
+  }
+  &_square.btn_md {
+    padding: 8px;
+    svg {
+      width: 20px;
+      height: 20px;
+      margin: 0;
+    }
+  }
+}

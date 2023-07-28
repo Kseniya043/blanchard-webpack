@@ -1,0 +1,134 @@
+.tag {
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 13px;
+  line-height: 20px;
+  color: $text-4;
+
+  // colors
+  &_blue {
+    background: $ui-blue;
+    &::after {
+      border-color: $ui-blue;
+    }
+  }
+
+  &_green {
+    background: $ui-green;
+  }
+
+  &_yellow {
+    background: $ui_yellow;
+  }
+
+  &_red {
+    background: $ui-red;
+  }
+
+  &_purple {
+    background: $ui-purple;
+  }
+
+  &_gray {
+    background: $ui-secondary;
+    color: $text-1;
+  }
+
+  // size
+  &_sm {
+    padding: 5px 9px;
+  }
+
+  // type
+  &_outline {
+    background: transparent;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0px;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 50px;
+      user-select: none;
+      transition: border $transition;
+    }
+
+    &.tag_blue {
+      color: $ui-blue;
+      &::after {
+        border-color: $ui-blue;
+      }
+    }
+
+    &.tag_green {
+      color: $ui-green;
+      &::after {
+        border-color: $ui-green;
+      }
+    }
+
+    &.tag_yellow {
+      color: $ui_yellow;
+      &::after {
+        border-color: $ui_yellow;
+      }
+    }
+
+    &.tag_red {
+      color: $ui-red;
+      &::after {
+        border-color: $ui-red;
+      }
+    }
+
+    &.tag_purple {
+      color: $ui-purple;
+      &::after {
+        border-color: $ui-purple;
+      }
+    }
+
+    &.tag_gray {
+      color: $ui-secondary;
+      color: $text-1;
+      &::after {
+        border-color: $ui-gray-2;
+      }
+    }
+  }
+
+  &_ghost {
+    &.tag_blue {
+      background: $ui-blue12;
+      color: $ui-blue;
+    }
+
+    &.tag_green {
+      background: $ui-green12;
+      color: $ui-green;
+    }
+
+    &.tag_yellow {
+      background: $ui_yellow12;
+      color: $ui_yellow;
+    }
+
+    &.tag_red {
+      background: $ui-red12;
+      color: $ui-red;
+    }
+
+    &.tag_purple {
+      background: $ui-purple12;
+      color: $ui-purple;
+    }
+
+    &.tag_gray {
+      background: $ui-secondary12;
+      color: $text-4;
+    }
+  }
+}

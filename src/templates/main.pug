@@ -1,0 +1,17 @@
+include ../mixins/mixins
+
+
+block variables
+
+doctype html
+html(lang='ru')
+    head
+        meta(charset="utf-8")
+        link(type="image/x-icon" rel="shortcut icon" href="/assets/img/favicon.ico")
+        title new design #{title}
+        meta(name="description" content=`${description}`)
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+    body.t-body
+        +Header()
+        block content
+

@@ -1,0 +1,20 @@
+//-
+    param {
+        name
+        id
+        text - (default: Прикрепить файл)
+    }
+
+mixin InputFile(param = {})
+    - param.name = param.name || 'name-' + Math.floor(Math.random() * 66666);
+    - param.id = param.id || 'id-' + Math.floor(Math.random() * 66666);
+    - param.text = param.text || 'Прикрепить файл';
+
+    .input-file
+        .input-file__list
+        label.input-file__drop(for=param.id)
+            .input-file__drop-text #{param.text}
+            .input-file__drop-icon
+                +icon('paper-clip')
+        input(type='file' id=param.id multiple="true" name=param.name)
+

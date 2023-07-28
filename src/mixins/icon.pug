@@ -1,0 +1,4 @@
+mixin icon(name, classNames)
+	- const classList = `svg-icon icon-${name} ${classNames || ''}`;
+	svg(class=classList)
+		use(xlink:href="/assets/img/icons/sprite.svg#" + name)

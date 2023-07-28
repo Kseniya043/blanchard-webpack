@@ -1,0 +1,17 @@
+// -
+    param {
+        items: [{label, targetId}]
+    }
+
+mixin TabsNav(param = {})
+
+    - param.items = param.items || [{ label: 'test 1', targetId: 'test2' }, { label: 'test 2', targetId: 'test2' }]
+
+    .tabs-nav
+
+        - for (let i = 0; i < param.items.length; i++)
+
+            button.tabs-nav__btn(
+                class=i==0 ? 'active' : ''
+                data-tab-target=param.items[i].targetId
+            ) #{param.items[i].label}

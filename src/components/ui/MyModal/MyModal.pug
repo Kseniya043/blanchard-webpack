@@ -1,0 +1,51 @@
+// -
+    param {
+        id:
+        backId:
+        mode: 'drawer', 'menu', 'notification'
+            ! if notification - class [info, warning, error, success]
+        class:
+    }
+
+    data atrributes: [
+        data-my-modal-submit
+        data-my-modal-reset
+        data-my-modal-close
+    ]
+
+    mixins [
+        head
+        body
+        footer: if not footer mixin, will be render default footer with btn submit and btn reset
+    ]
+
+mixin MyModal(param = {})
+
+    - const slots = {};
+    mixin slot(name)
+        - slots[name] = block
+    block
+
+    .my-modal(
+        id=param.id
+        class=param.mode ? 'my-modal_'+param.mode : ''
+        class=param.class
+    )
+        .my-modal__container
+            if slots['head']
+                .my-modal__head
+                    if (param.backId)
+                        .my-modal__head-back
+                            button(data-my-modal=param.backId).btn.btn_square
+                                +icon('arrow-left')
+                    .my-modal__head-text
+                        - slots['head']();
+                    .my-modal__head-close
+                        button(data-my-modal-close).btn.btn_square
+                            +icon('close')
+            .my-modal__body
+                if slots['body']
+                    - slots['body']();
+            if slots['footer']
+                .my-modal__footer
+                    - slots['footer']();

@@ -1,0 +1,156 @@
+export const CreateInputRange = (inputs) => {
+  const inputRangeUnits = document.createElement('div');
+  inputRangeUnits.classList.add('input-range__units');
+
+  const inputRangeInputs = document.createElement('div');
+  inputRangeInputs.classList.add('input-range__inputs');
+
+  inputs.forEach((input) => {
+    const id1 = Math.floor(Math.random() * 666666);
+
+    if (input.type === 'radio') {
+      inputRangeUnits.insertAdjacentHTML(
+        'beforeend',
+        `
+        <div class="radio-btn">
+          <input type="radio" name="${input.name}" value="${input.value}" id="${id1}" ${input.checked ? 'checked' : ''}>
+          <label for="${id1}">${input.label}</label>
+        </div>
+      `,
+      );
+    }
+
+    const id2 = Math.floor(Math.random() * 666666);
+
+    if (input.name === 'priceMin' || input.name === 'priceMax') {
+      inputRangeInputs.insertAdjacentHTML(
+        'beforeend',
+        `
+          <div class="input ${input.name === 'priceMin' ? 'input-min' : 'input-max'}">
+            <input id="${id2}" name="${input.name}" placeholder=" " value="${input.value}">
+            <label class="input__placeholder" for="${id2}">${input.label}</label>
+          </div>
+        `,
+      );
+    }
+  });
+
+  return `
+    <div class="input-range">
+      ${inputRangeUnits.outerHTML}
+      ${inputRangeInputs.outerHTML}
+      <div class="input-range__slider" data-min="0" data-max="6666666"></div>
+    </div>
+  `;
+};
+
+export const CreateCheckList = (inputs) => {
+  const checkListItems = inputs.map((input) => {
+    const id = Math.floor(Math.random() * 666666);
+
+    return `
+      <div class="checkbox checkbox_reverse">
+        <input class="checkbox__input" type="checkbox" name="${input.name}" value="0" id="${id}" ${input.checked ? 'checked' : ''}>
+        <label class="checkbox__label" for="${id}">${input.label}</label>
+      </div>
+    `;
+  }).join('');
+
+  const id = Math.floor(Math.random() * 666666);
+
+  return `
+    <div class="check-list">
+      <div class="check-list__search">
+        <div class="input input_search">
+          <input class="filter__input-skip" id="${id}" placeholder=" ">
+          <label class="input__placeholder" for="${id}">Placeholder</label>
+          <div class="input__btns">
+            <button class="input__btn-clear" type="reset" style="display: none;">
+              <svg class="svg-icon icon-clear">
+                <use xlink:href="/assets/img/icons/sprite.svg#clear"></use>
+              </svg>
+            </button>
+            <button class="input__btn-search" type="submit">
+              <svg class="svg-icon icon-search">
+                <use xlink:href="/assets/img/icons/sprite.svg#search"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="check-list__items">
+        ${checkListItems}
+      </div>
+    </div>
+  `;
+};
+
+export const CreateAccordion = (items) => {
+  const accordion = document.createElement('ul');
+  accordion.classList.add('accordion');
+
+  const accordionItems = items.map((el) => {
+    const item = document.createElement('li');
+    item.classList.add('accordion__item');
+
+    item.innerHTML = `
+          <div class="accordion__head">
+            <div class="accordion__head-content">
+              <div class="accordion__head-text"></div>
+              <div class="accordion__head-label"></div>
+            </div>
+            <div class="accordion__icon">
+              <svg class="svg-icon icon-plus">
+                <use xlink:href="/assets/img/icons/sprite.svg#plus"></use>
+              </svg>
+            </div>
+          </div>
+          <div class="accordion__body">
+            <div class="accordion__body-content"></div>
+          </div>
+        `;
+
+    const header = item.querySelector('.accordion__head-text');
+    header.innerText = 'el.header';
+
+    const body = item.querySelector('.accordion__body-content');
+    body.append(el);
+
+    return item;
+  });
+
+  accordion.append(...accordionItems);
+
+  return accordion;
+};
+
+export const CreateBtnDrawer = (myModal, name, count) => {
+  const btn = document.createElement('button');
+  btn.classList.add('btn-drawer');
+  btn.dataset.myModal = myModal;
+
+  const btnName = document.createElement('span');
+  btnName.classList.add('btn-drawer__name');
+  const btnCount = document.createElement('span');
+  btnCount.classList.add('btn-drawer__count');
+
+  btnName.innerText = name;
+  btnCount.innerText = count;
+
+  btn.append(btnName, btnCount);
+
+  return btn;
+};
+
+export const changeAllId = (parent) => {
+  [...parent.querySelectorAll('input[id]')].forEach((el) => {
+    const id = el.getAttribute('id');
+    const newId = Math.floor(Math.random() * 666666);
+    const label = el.parentNode.querySelector(`[for="${id}"]`);
+
+    el.id = newId;
+    label.setAttribute('for', newId);
+  });
+};
+
+export const temp = {};

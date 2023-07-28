@@ -1,0 +1,128 @@
+.product-group {
+  @include card();
+
+  &__filter,
+  &__pagination {
+    padding: 24px;
+    @include sm {
+      padding: 24px 16px;
+    }
+  }
+
+  &__tabs {
+    padding: 0 24px;
+    @include sm {
+      padding: 0 16px;
+    }
+  }
+}
+
+.product-group__table_search {
+  @include card();
+
+  .table {
+    border-top: none;
+
+    @include afterSm {
+      th, td {
+        &:nth-child(1) {
+          width: 70%;
+        }
+        &:nth-child(2) {
+          width: 15%;
+        }
+        &:nth-child(3) {
+          width: 15%;
+        }
+      }
+    }
+  }
+}
+
+.pg-table {
+  tr {
+    td {
+      @include afterSm {
+        &:last-child {
+          .btn:first-child {
+            opacity: 0;
+            transition: $transition opacity;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      td {
+        &:last-child {
+          .btn:first-child {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    @include sm {
+      .pg-table__option {
+        display: none;
+      }
+
+      .pg-table__name {
+        width: 100%;
+      }
+
+      .pg-table__actions {
+        flex: 1;
+      }
+    }
+
+    @include afterSm {
+      .pg-table__price {
+        span {
+          &:last-child {
+            display: none;
+          }
+        }
+      }
+      .pg-table__name {
+        span {
+          &:first-child {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  &__btn-cart {
+    @include afterSm {
+      svg {
+        display: none;
+      }
+    }
+    @include sm {
+      span {
+        display: none;
+      }
+      svg {
+        margin: 0;
+        width: 20px;
+        height: 20px;
+      }
+      padding: 0;
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  .icon-fire {
+    fill: $ui-primary-2;
+  }
+}

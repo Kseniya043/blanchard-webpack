@@ -1,0 +1,42 @@
+.city-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 100%;
+
+  &__items {
+    max-height: 100%;
+    overflow: auto;
+    &-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__link {
+    padding: 11px 0;
+    color: $text-1;
+    position: relative;
+    &:hover {
+      text-decoration: none;
+      color: $text-5;
+    }
+    &.active {
+      &::before {
+        z-index: 1;
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        background: url('~@/assets/img/svg/select-checked.svg') center center no-repeat;
+      }
+    }
+    @include sm {
+      box-shadow: inset 0px -1px 0px #DFE1E6;
+    }
+  }
+}

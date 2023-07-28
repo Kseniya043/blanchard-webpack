@@ -1,0 +1,17 @@
+extends ../templates/main
+
+block variables
+    - const title = 'Главная'
+    - const description = 'Описание главной страницы'
+
+block content
+    main
+        section
+            include ../components/Main/Main
+        section.container
+            include ../components/Banner/Banner
+
+    button(data-my-modal="#main-video") modal
+
+    include _modals
+

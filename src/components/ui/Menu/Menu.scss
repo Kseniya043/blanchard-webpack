@@ -1,0 +1,29 @@
+.tippy-box[data-theme~='menu'] {
+  background-color: $ui-white;
+  color: $text-2;
+  box-shadow: $box-shadow;
+  padding: 0;
+  border-radius: $border-radius-plus;
+
+  .tippy-content {
+    padding: 0;
+  }
+
+  .tippy-arrow {
+    color: $ui-white;
+
+    &::before {
+      top: -8px;
+      left: 0px;
+      content: '';
+      width: 20px;
+      height: 8px;
+    }
+  }
+}
+
+.menu {
+  > .menu__content {
+    display: none;
+  }
+}

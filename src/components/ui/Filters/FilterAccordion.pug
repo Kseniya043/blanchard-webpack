@@ -1,0 +1,76 @@
+mixin FilterAccordion()
+
+    .filter-accordion
+
+        button.filter-accordion__submit Показать 20 товаров
+
+        .filter-accordion__all.filter_all(data-filter-type="all" data-filter-name="all")
+            button.btn.btn_primary.btn_100(data-my-modal="#filterAccordionAll")
+                | Фильтры
+                +icon('hopper')
+
+            +MyModal({id: 'filterAccordionAll', mode: 'drawer', class: 'filter__modal'})
+                +slot('head') Фильтры
+                +slot('body')
+                    +Select({count: 2, placeholder: 'Сортировка'})
+                +slot('footer')
+                    //-button(type="reset" data-my-modal-reset).btn.btn_secondary reset
+                    button(type="submit" data-my-modal-submit).btn.btn_primary submit
+
+
+        ul.accordion.accordion_sm.filter-accordion__items
+
+            li.accordion__item.accordion__item_fake
+                .accordion__head
+                    .accordion__head-content
+                        +Select({ name: 'sort', count: 2, placeholder: 'Сортировка' })
+
+            li.accordion__item(data-filter-type="check-list" data-filter-name="width")
+                .accordion__head
+                    .accordion__head-content
+                        .accordion__head-text Ширина
+                        .accordion__head-label(data-filter-label)
+                        .accordion__icon
+                            +icon('arrow-down')
+                .accordion__body
+                    .accordion__body-content
+                        +CheckList({ checked: [2, 6], name: 'width' })
+
+            li.accordion__item(data-filter-type="input-range" data-filter-name="diameter")
+                .accordion__head
+                    .accordion__head-content
+                        .accordion__head-text Диаметр
+                        .accordion__head-label(data-filter-label)
+                        .accordion__icon
+                            +icon('arrow-down')
+                .accordion__body
+                    .accordion__body-content
+                        +InputRange({ max: 99, inputType: 'unit' })
+
+            li.accordion__item(data-filter-type="check-list" data-filter-name="height")
+                .accordion__head
+                    .accordion__head-content
+                        .accordion__head-text Высота
+                        .accordion__head-label(data-filter-label)
+                        .accordion__icon
+                            +icon('arrow-down')
+                .accordion__body
+                    .accordion__body-content
+                        +CheckList({checked: [1, 3], name: 'height'})
+
+            li.accordion__item(data-filter-type="input-range" data-filter-name="price")
+                .accordion__head
+                    .accordion__head-content
+                        .accordion__head-text Цена
+                        .accordion__head-label(data-filter-label)
+                        .accordion__icon
+                            +icon('arrow-down')
+                .accordion__body
+                    .accordion__body-content
+                        +InputRange()
+
+            li.accordion__item.accordion__item_fake
+                .accordion__head
+                    .accordion__head-content
+                        button.btn.btn_md.btn_primary-dark.btn_100.filter_clear Cбросить
+

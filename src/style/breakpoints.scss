@@ -1,0 +1,33 @@
+@mixin xl {
+  @media screen and (max-width: 1308px) {
+    @content;
+  }
+}
+//@mixin lg {
+//  @media screen and (max-width: 1024px) {
+//    @content;
+//  }
+//}
+@mixin md {
+  @media screen and (max-width: 1270px) {
+    @content;
+  }
+}
+@mixin sm {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin xs {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+// After
+
+@mixin afterSm {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}

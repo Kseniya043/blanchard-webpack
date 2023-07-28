@@ -1,0 +1,80 @@
+extends ../templates/main
+
+block variables
+    - const title = 'Главная'
+    - const description = 'Описание главной страницы'
+
+block content
+
+    div(style="display: flex; gap: 50px")#ui-container
+        div.t-main-left
+            ul.t-main-left-list
+                li
+                    button(data-tab="1") Typography
+                li
+                    button(data-tab="2") Btn
+                li
+                    button(data-tab="3") Grid
+                li
+                    button(data-tab="4") Input
+                li
+                    button(data-tab="5") Tooltip
+                li
+                    button(data-tab="menu") menu
+                li
+                    button(data-tab="6") Breadcrumbs
+                li
+                    button(data-tab="8") Modal
+                li
+                    button(data-tab="9") Accordion
+                li
+                    button(data-tab="11") FilterCommon
+                li
+                    button(data-tab="13") СhoosingСity
+                li
+                    button(data-tab="14") Tag
+                li
+                    button(data-tab="page") Pagination
+                li
+                    button(data-tab="load") Loading
+                li
+                    button(data-tab="form") Form
+                li
+                    button(data-tab="scroll") Scroll
+                li
+                    button(data-tab="tabs") tabs
+        .t-tabs(style="box-shadow: -10px 0 10px -10px #BABABA; width: 100%; min-height: 100vh; padding: 15px;")
+            .tab.tab-1
+                include ../components/ui/Typography/examples
+            .tab.tab-2
+                include ../components/ui/Btn/examples
+            .tab.tab-3
+                include ../components/ui/Grid/examples
+            .tab.tab-4(style="display: block; padding: 50px;")
+                include ../components/ui/Input/examples/examples
+            .tab.tab-5
+                include ../components/ui/Tooltip/examples
+            .tab.tab-menu
+                include ../components/ui/Menu/examples
+            .tab.tab-6
+                include ../components/ui/Breadcrumbs/examples
+            .tab.tab-8
+                include ../components/ui/MyModal/examples
+            .tab.tab-9.accordion-tab
+                include ../components/ui/Accordion/examples
+            .tab.tab-11.t-filter-tab
+                include ../components/ui/Filters/example
+            .tab.tab-13
+                include ../components/ui/СhoosingСity/examples
+            .tab.tab-14
+                include ../components/ui/Tag/examples
+            .tab.tab-page
+                include ../components/ui/Pagination/example
+            .tab.tab-load
+                include ../components/ui/Loading/examples
+            .tab.tab-form
+                include ../components/ui/Form/example
+            .tab.tab-scroll
+                include ../components/ui/scrollTo/example
+            .tab.tab-tabs
+                include ../components/ui/Tabs/example

@@ -1,0 +1,11 @@
+form.form
+    .form__row
+        +Input({ placeholder: 'Name', required: true })
+    .form__row
+        +Input({ placeholder: 'phone', required: true, mask: 'phone' })
+        +Input({ placeholder: 'email', required: true, type: email })
+    .form__row
+        +Input({ type: 'textarea' })
+    .form__row
+        button.btn.btn_primary ok
+        button(type='reset').btn.btn_secondary reset

@@ -1,0 +1,62 @@
+.choosing-city(style="position: relative; display: inline-block")
+    .choosing-city__btn
+        button(data-my-modal="#choosing-city-dropdown") Выбрать город
+    .choosing-city__dropdown
+        +MyModal({ id: 'choosing-city-dropdown', mode: 'menu' })
+            +slot('head') Ваш город Москва?
+            +slot('footer')
+                button(type="submit" data-my-modal-submit).btn.btn_primary Да
+                button(type="reset" data-my-modal-reset data-my-modal="#choosing-city").btn.btn_secondary Выбрать другой
+    .choosing-city__modal
+        +MyModal({ id: 'choosing-city', mode: 'drawer' })
+            +slot('head') Выбор города
+            +slot('body')
+                .city-list
+                    .city-list__input
+                        +Input({ type: 'search', name: 'citySearch' })
+                    .city-list__items
+                        .city-list__items-wrap
+                            a(href="#").city-list__link.active Екатеринбург
+                            a(href="#").city-list__link Нижний Тагил
+                            a(href="#").city-list__link Колыма
+                            a(href="#").city-list__link Геленджик
+                            a(href="#").city-list__link Асбест
+                            a(href="#").city-list__link Йошкар-Ола
+                            a(href="#").city-list__link Астрахань
+                            a(href="#").city-list__link Архыз
+                            a(href="#").city-list__link Домбай
+                            a(href="#").city-list__link Барнаул
+                            a(href="#").city-list__link Белгород
+                            a(href="#").city-list__link Благовещенск
+                            a(href="#").city-list__link Брянск
+                            a(href="#").city-list__link Великий Новгород
+                            a(href="#").city-list__link Владивосток
+                            a(href="#").city-list__link Владикавказ
+                            a(href="#").city-list__link Владимир
+                            a(href="#").city-list__link Владивосток
+                            a(href="#").city-list__link Липецк
+                            a(href="#").city-list__link Норильск
+                            a(href="#").city-list__link Владикавказ
+                            a(href="#").city-list__link Владимир
+                            a(href="#").city-list__link Волгоград
+
+            +slot('footer')
+                button(type="reset" data-my-modal-reset).btn.btn_secondary reset
+                button(type="submit" data-my-modal-submit).btn.btn_primary submit
+
+//.city-confirm#city-confirm
+//    p.city-confirm__title Ваш город Москва?
+//
+//    .city-confirm__icon
+//        +icon('notification-info')
+//    button.btn.btn_primary.city-confirm__yes#city-confirm-yes Да
+//    button.btn(data-modal="#ChoosingCity") Выбрать другой
+//
+//+Drawer({
+//  id: 'ChoosingCity',
+//  searchId: 'inputChoosingCity',
+//  json: '[{"label":"Екатеринбург","link":"https://yandex.ru","active":true},{"label":"Нижний Тагил","link":"https://yandex.ru"},{"label":"Колыма","link":"https://yandex.ru"}]',
+//})
+//    +slot('header') Выбор города
+//    +slot('body')
+//        | ChoosingCity

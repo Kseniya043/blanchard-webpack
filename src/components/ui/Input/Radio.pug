@@ -1,0 +1,29 @@
+// -
+	param.name
+	param.value
+	param.checked
+	param.disabled
+	param.text
+
+mixin Radio(param = {})
+
+	label.radio
+		input(type="radio" name=param.name value=param.value checked=param.checked disabled=param.disabled)
+		span=param.text
+
+
+// -
+	param.name
+	param.value
+	param.checked
+	param.disabled
+	param.text
+
+mixin RadioBtn(param = {})
+
+	- param.id = param.id || 'id-' + Math.floor(Math.random() * 666);
+	- param.name = param.name || 'name-' + Math.floor(Math.random() * 666);
+
+	.radio-btn
+		input(type="radio" name=param.name value=param.value checked=param.checked disabled=param.disabled id=param.id)
+		label(for=param.id) #{param.text}

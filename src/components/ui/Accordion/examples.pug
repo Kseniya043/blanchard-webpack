@@ -1,0 +1,17 @@
+h2 Accordion
+
+.t-section.t-block
+
+	ul.accordion
+
+		- for (let i = 0; i < 10; i++)
+			li.accordion__item
+				.accordion__head
+					.accordion__head-content
+						.accordion__head-text Заголовок #{i}
+						- if (i < 3)
+							.accordion__head-label label
+					.accordion__icon
+						+icon('plus')
+				.accordion__body
+					.accordion__body-content Описание #{i}

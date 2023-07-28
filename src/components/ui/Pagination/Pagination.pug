@@ -1,0 +1,22 @@
+mixin Pagination()
+    .pagination
+        .pagination__show-more
+            button.btn.btn_md.btn_secondary.btn_100 Показать еще
+        .pagination__content
+            .pagination__info
+                | Показано 150−180 из 1850 товаров
+            .pagination__pages.pages
+                a(href="#").pages__item.pages__item_prev
+                    +icon('arrow-down')
+                a(href="#").pages__item.active 1
+                a(href="#").pages__item 2
+                a(href="#").pages__item 3
+                a(href="#").pages__item 4
+                a(href="#").pages__item 5
+                a(href="#").pages__item 6
+                a(href="#").pages__item ...
+                a(href="#").pages__item 666
+                a(href="#").pages__item.pages__item_next
+                    +icon('arrow-down')
+            .pagination__count
+                | На странице 20 товаров

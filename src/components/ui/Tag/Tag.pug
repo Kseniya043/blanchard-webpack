@@ -1,0 +1,14 @@
+// -
+    param = {
+        text:
+        type: Filled, Ghost, Outline
+        color: Blue, Green, Yellow, Red, Purple, Gray
+        size: *none*, sm
+    }
+
+mixin Tag(param = {})
+    .tag(
+        class=param.type ? 'tag_' + param.type : ''
+        class=param.color ? 'tag_' + param.color : ''
+        class=param.size ? 'tag_' + param.size : ''
+    ) #{param.text}

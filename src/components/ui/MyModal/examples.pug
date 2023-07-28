@@ -1,0 +1,72 @@
+button(data-my-modal="#notif") open notif
+br
+br
+button(data-my-modal="#demo1") open modal
+br
+br
+div(style="position: relative; display: inline-block")
+    button(data-my-modal="#demo11") open modal_menu
+    +MyModal({ id: 'demo11', mode: 'menu' })
+        +slot('head') Модалка меню
+        +slot('body')
+            | Эта модалка с position: absolute, поэтому разместить ее лучше в родителе с position: relative
+        +slot('footer')
+            button(type="reset" data-my-modal-reset).btn.btn_secondary reset
+            button(type="submit" data-my-modal-submit).btn.btn_primary submit
+
+
+div
+    div
+        div
+            +MyModal({ id: 'notif', mode: 'notification', class: 'info' })
+                +slot('head') Модалка Notification
+                +slot('body')
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    | Adipisci aliquam deleniti earum minima nesciunt suscipit temporibus ullam!
+                    | Ab, accusamus in.
+                +slot('footer')
+                    button(type="submit" data-my-modal-submit).btn.btn_primary-dark submit
+                    button(type="reset" data-my-modal-reset).btn.btn_outline-dark reset
+
+            +MyModal({id: 'demo1'})
+                +slot('head') Модалка обыкновенная
+                +slot('body')
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    | Adipisci aliquam deleniti earum minima nesciunt suscipit temporibus ullam!
+                    | Ab, accusamus in.
+                    br
+                    br
+                    button(data-my-modal="#demo2").btn.btn_secondary Покажите drawer
+                +slot('footer')
+                    button(type="reset" data-my-modal-reset).btn.btn_secondary reset
+                    button(type="submit" data-my-modal-submit).btn.btn_primary submit
+
+            +MyModal({id: 'demo2', backId: '#demo1', mode: 'drawer'})
+                +slot('head') Дравер обыкновенный
+                +slot('body')
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, voluptate!
+                    br
+                    button(data-my-modal="#demo3").btn.btn_secondary Внутренний дравер
+                    br
+                    br
+                    div(style="position: relative; display: inline-block")
+                        button(data-my-modal="#demo66") open modal_menu
+                        +MyModal({ id: 'demo66', mode: 'menu' })
+                            +slot('body')
+                                ul
+                                    li menu
+                                    li menu
+                                    li menu
+                                    li menu
+                                    li menu
+
+                +slot('footer')
+                    button(type="reset" data-my-modal-reset).btn.btn_secondary reset
+                    button(type="submit" data-my-modal-submit).btn.btn_primary submit
+
+            +MyModal({id: 'demo3', backId: '#demo2', mode: 'drawer'})
+                +slot('head') Дравер внутренний
+                +slot('body') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab asperiores blanditiis est ipsum maiores non officiis quas reiciendis sit temporibus?
+                +slot('footer')
+                    button(type="reset" data-my-modal-reset).btn.btn_secondary reset
+                    button(type="submit" data-my-modal-submit).btn.btn_primary submit

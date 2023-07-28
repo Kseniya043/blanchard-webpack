@@ -1,0 +1,133 @@
+// -
+    param.id - id // Если оставить пустым, будет сгенерирован Math.floor(Math.random() * 666)
+    param.name - name // Если оставить пустым, будет сгенерирован Math.floor(Math.random() * 666)
+    param.size - lg (default), md
+    param.status - *none* (default), success, error // Сделано для примеров, управляться будет через валидатор
+    param.placeholder - text
+    param.mode - *none* (default), placeholder
+    param.type - text (default), search, textarea, count, unit
+    param.disabled - boolean
+    param.class - // TODO Установлен не на всех
+    param.inputClass - // TODO Установлен не на всех
+    param.required
+    param.mask - [phone,]
+    param.unit - подпись в начале инпута, только для param.type = unit
+
+    // textarea
+        param.row - default = 2
+
+
+mixin Input(param = {})
+    - param.id = param.id ? param.id : 'id-' + Math.floor(Math.random() * 66666);
+    - param.name = param.name ? param.name : 'name-' + Math.floor(Math.random() * 66666);
+
+    // - TYPE TEXT
+    - if (!param.type || param.type === 'text')
+        .input(
+            class=param.status ? 'input_' + param.status : ''
+            class=param.size ? 'input_' + param.size : ''
+            class=param.mode ? 'input_' + param.mode : ''
+            class=param.class
+        )
+            input(
+                type="text"
+                id=param.id
+                name=param.name
+                placeholder=" "
+                disabled=param.disabled
+                class=param.inputClass
+                required=param.required
+                data-mask=param.mask
+            )
+            label(for=param.id).input__placeholder #{param.placeholder}
+
+    // - TYPE COUNT
+    - if (param.type === 'count')
+        .input(
+            class=param.status ? 'input_' + param.status : ''
+            class=param.size ? 'input_' + param.size : ''
+            class='input_' + param.type
+            class=param.class
+        )
+            button.btn.btn_square.input__minus
+                +icon('minus')
+            input(
+                type="text"
+                id=param.id
+                name=param.name
+                placeholder=" "
+                disabled=param.disabled
+                class=param.inputClass
+                required=param.required
+                data-mask=param.mask
+                maxlength=3
+                value=666
+            )
+            label(for=param.id).input__placeholder #{param.placeholder}
+            button.btn.btn_square.input__plus
+                +icon('plus')
+
+    // - TYPE UNIT
+    - if (param.type === 'unit')
+        .input(
+            class=param.status ? 'input_' + param.status : ''
+            class=param.size ? 'input_' + param.size : ''
+            class='input_' + param.type
+            class=param.class
+        )
+            label.input__label #{param.unit}
+            input(
+                type="text"
+                id=param.id
+                name=param.name
+                placeholder=" "
+                disabled=param.disabled
+                class=param.inputClass
+                required=param.required
+                data-mask=param.mask
+                maxlength=3
+                value=666
+            )
+            label(for=param.id).input__placeholder #{param.placeholder}
+
+    // - TYPE SEARCH
+        param.mode - НЕ пременим
+    - if (param.type === 'search')
+        .input(
+            class=param.status ? 'input_' + param.status : ''
+            class=param.size ? 'input_' + param.size : ''
+            class='input_' + param.type
+        )
+            input(
+                type="text"
+                id=param.id
+                name=param.name
+                placeholder=" "
+                disabled=param.disabled
+                class=param.inputClass
+            )
+            label(for=param.id).input__placeholder #{param.placeholder}
+            .input__btns
+                button(type='reset' style="display:none;").input__btn-clear
+                    +icon('clear')
+                button(type='submit').input__btn-search
+                    +icon('search')
+
+    // - TYPE TEXTAREA
+    - if (param.type === 'textarea')
+        .input.textarea(
+            class=param.status ? 'input_' + param.status : ''
+            class=param.size ? 'input_' + param.size : ''
+            class=param.mode ? 'input_' + param.mode : ''
+            class=param.class
+        )
+            textarea(
+                type="text"
+                id=param.id
+                name=param.name
+                placeholder=" "
+                disabled=param.disabled
+                class=param.inputClass
+                data-row=param.row || 2
+            )
+            label(for=param.id).input__placeholder #{param.placeholder}
