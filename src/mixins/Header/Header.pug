@@ -3,6 +3,17 @@
 
 mixin Header(param = {})
     header.header
-        .container
-            span logo
-            span navigation
+            .header__cap.container
+                .header__logo
+                    img(src="../assets/img/content/logo.png" alt="Blanchard Logo")
+                .header__nav
+                    a( href="#") О нас
+                    a( href="#") Галерея
+                    a( href="#") Каталог
+                    a( href="#") События
+                    a( href="#") Проекты
+                    a( href="#") Контакты
+                .header__search
+                    +icon("search")
+
+
